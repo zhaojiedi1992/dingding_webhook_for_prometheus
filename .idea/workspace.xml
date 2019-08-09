@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1403c6b7-a942-4c1c-b89e-e305084b4e76" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/send_alerts.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/up.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default_text.j2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default_text.j2" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/default_text.j2">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="45" column="68" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
+            <state relative-caret-position="454">
+              <caret line="50" column="97" selection-start-line="50" selection-start-column="97" selection-end-line="50" selection-end-column="97" />
             </state>
           </provider>
         </entry>
@@ -264,12 +261,12 @@
       <option name="presentableId" value="Default" />
       <updated>1565231956794</updated>
       <workItem from="1565231958961" duration="20984000" />
-      <workItem from="1565312433840" duration="10968000" />
+      <workItem from="1565312433840" duration="12252000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31952000" />
+    <option name="totallyTimeSpent" value="33236000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -480,8 +477,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/default_text.j2">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="45" column="68" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="68" />
+        <state relative-caret-position="454">
+          <caret line="50" column="97" selection-start-line="50" selection-start-column="97" selection-end-line="50" selection-end-column="97" />
         </state>
       </provider>
     </entry>
