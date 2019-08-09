@@ -45,6 +45,7 @@ def create_app(config=None):
         if name not in app.ding_name_dict:
             return "not"
         data = request.json
+        app.logger.info("{0}".format(request))
         app.logger.info("data={0}".format(data))
         pre_process_data(data)
         template_name = app.custome_config.get("template", "default")
