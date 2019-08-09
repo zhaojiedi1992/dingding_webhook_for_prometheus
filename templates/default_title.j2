@@ -1,0 +1,11 @@
+{# 触发报警 #}
+{% if data.status == "firing" %}
+发生报警
+{# 报警恢复 #}
+{% elif data.status == "resolved" %}
+故障恢复
+{# 其他的 #}
+{% else %}
+
+{% endif %}
+
