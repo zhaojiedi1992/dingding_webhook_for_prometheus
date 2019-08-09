@@ -26,7 +26,7 @@
 > - 实例名称: {{ first_info.annotations.instance }}
 > - 开始时间: {{ first_info.startsAt  }}
 > - 规则报警: [{{ first_info_alert_name }}]({{   first_info_rule   }})
-> - 规则描述: {{ first_info.labels.desc   }}
+> - 规则描述: {{ first_info.labels.desc }}
 > - 报警数值: {{ first_info.annotations.value + first_info.labels.unit }}
 > - 报警级别: {{ first_info.labels.severity }}
 > - 实例详情: {{  first_info_link }}
@@ -34,8 +34,8 @@
 {# 报警恢复 #}
 {% elif data.status == "resolved" %}
 > - 持续时间: {{ first_info.during  }}分钟
-> - 报警规则: [{{ first_info_alert_name }}] ({{   first_info_rule   }})
-> - 规则描述: {{ first_info.labels.desc  }}
+> - 报警规则: [{{ first_info_alert_name }}]({{   first_info_rule   }})
+> - 规则描述: {{ first_info.labels.desc }}
 > - 当前数值: {{ first_info.annotations.value + first_info.labels.unit }}
 > - 实例详情: {{  first_info_link }}
 > - 故障信息:  目前所有({{  extra_data.resolved }})报警已恢复。
