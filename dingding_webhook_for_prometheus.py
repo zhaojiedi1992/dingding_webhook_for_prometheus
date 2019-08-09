@@ -33,6 +33,8 @@ def main():
     app = create_app(config=config)
     host = config.get("web.listen_address").split(":")[0]
     port = config.get("web.listen_address").split(":")[1]
+    if host == "":
+        host= "0.0.0.0"
     app.run(host, port, debug=True)
 
 
