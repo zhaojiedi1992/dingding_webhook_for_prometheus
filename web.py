@@ -51,10 +51,10 @@ def create_app(config=None):
         template_name = app.custome_config.get("template", "default")
         with open("templates/{0}_text.j2".format(template_name), 'r', encoding="utf-8") as f:
             lines = f.read()
-            template_text = Template(lines)
+            template_text = Template(lines,trim_blocks=True)
         with open("templates/{0}_title.j2".format(template_name), 'r', encoding="utf-8") as f:
             lines = f.read()
-            template_title = Template(lines)
+            template_title = Template(lines,trim_blocks=True)
 
         status_list = jmespath.search("alerts[].status", data)
         extra_data = Counter(status_list)
