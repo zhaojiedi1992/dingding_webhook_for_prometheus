@@ -22,6 +22,8 @@
 {% set first_info_name="" %}
 {% if first_info.annotations.instanceId is  defined  %}
     {% set first_info_name=first_info.annotations.instanceId %}
+{% elif first_info.annotations.instance is  defined  %}
+   {% set first_info_name=first_info.annotations.instance %}
 {% elif first_info.labels.instance is  defined  %}
    {% set first_info_name=first_info.labels.instance %}
 {% endif %}
