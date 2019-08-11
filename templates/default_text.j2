@@ -40,7 +40,7 @@
 > - 开始时间: {{ first_info.startsAt  }}
 > - 规则报警: [{{ first_info_alert_name }}]({{   first_info_rule   }})
 > - 规则描述: {{ first_info.labels.desc   }}
-{% if first_info.annotations.value is defined and first_info.labels.value is defined  %}
+{% if first_info.annotations.value is defined and first_info.labels.unit is defined  %}
 > - 当前数值: {{ first_info.annotations.value |float |round(2,'common') }}{{first_info.labels.unit }}
 {% endif %}
 > - 报警级别: {{ first_info.labels.severity }}
@@ -52,7 +52,7 @@
 > - 持续时间: {{ first_info.during  }}分钟
 > - 报警规则: [{{ first_info_alert_name }}]({{   first_info_rule   }})
 > - 规则描述: {{ first_info.labels.desc  }}
-{% if first_info.annotations.value is defined and first_info.labels.value is defined  %}
+{% if first_info.annotations.value is defined and first_info.labels.unit is defined  %}
 > - 当前数值: {{ first_info.annotations.value |float |round(2,'common') }}{{first_info.labels.unit }}
 {% endif %}
 > - 实例详情: {{  first_info_link }}
