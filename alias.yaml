@@ -1,0 +1,25 @@
+conf:
+  aliyun_meta_ecs_info:
+    id: InstanceId
+    alias: InstanceName
+  aliyun_meta_eip_info:
+    id: InstanceId
+    alias: Name
+  aliyun_meta_mongodb_info:
+    id: DBInstanceId
+    alias: DBInstanceDescription
+  aliyun_meta_nat_info:
+    id: NatGatewayId
+    alias: Name
+  aliyun_meta_rds_info:
+    id: DBInstanceId
+    alias: DBInstanceDescription
+  aliyun_meta_redis_info:
+    id: InstanceId
+    alias: InstanceName
+  aliyun_meta_slb_info:
+    id: LoadBalancerId
+    alias: LoadBalancerName
+  aliyun_meta_vpn_info:
+    id: VpnGatewayId
+    alias: Description

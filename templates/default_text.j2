@@ -18,7 +18,7 @@
     {% set first_info_link= first_info_link + "    [CloudMonitor]("+ first_info.annotations.cloudmonitor +")" %}
 {% endif %}
 
-{# 设置实例名称和外部链接 #}
+{# 设置实例信息和外部链接 #}
 {% set first_info_name="" %}
 {% if first_info.annotations.instanceId is  defined  %}
     {% set first_info_name=first_info.annotations.instanceId %}
@@ -34,9 +34,13 @@
 {% endif %}
 
 
+{% if "alias" in first_info.annotations %}
+     {% set first_info_name= first_info_name + " 【 " + first_info.annotations.alias + " 】" %}
+{% endif %}
+
 {# 触发报警 #}
 {% if data.status == "firing" %}
-> - 实例名称: {{ first_info_name }}
+> - 实例信息: {{ first_info_name }}
 > - 开始时间: {{ first_info.startsAt  }}
 > - 规则报警: [{{ first_info_alert_name }}]({{   first_info_rule   }})
 > - 规则描述: {{ first_info.labels.desc   }}
@@ -48,7 +52,7 @@
 > - 故障信息:  目前恢复情况 {{  extra_data.resolved }}/{{ extra_data.alert }}。
 {# 报警恢复 #}
 {% elif data.status == "resolved" %}
-> - 实例名称: {{ first_info_name }}
+> - 实例信息: {{ first_info_name }}
 > - 持续时间: {{ first_info.during  }}分钟
 > - 报警规则: [{{ first_info_alert_name }}]({{   first_info_rule   }})
 > - 规则描述: {{ first_info.labels.desc  }}

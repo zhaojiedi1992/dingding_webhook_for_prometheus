@@ -7,7 +7,9 @@ import signal
 import sys
 import time
 from web import create_app
-
+import os ,sys
+sys.path.append(os.path.dirname(__file__))
+from tools import get_alias
 
 def main():
     logging.getLogger().setLevel(logging.INFO)
@@ -29,7 +31,7 @@ def main():
     print(args)
     config = args.__dict__
     # logging.info("Start exporter, listen on {}".format(int(args.__getattr__("--web.listen-address"))))
-
+    config["alias"] = get_alias()
     app = create_app(config=config)
     host = config.get("web.listen_address").split(":")[0]
     port = config.get("web.listen_address").split(":")[1]

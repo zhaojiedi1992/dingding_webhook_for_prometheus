@@ -9,7 +9,9 @@ import json
 from collections import Counter
 import jmespath
 import re
-
+import os ,sys
+sys.path.append(os.path.dirname(__file__))
+from tools import get_alias
 
 def create_app(config=None):
     app = Flask(__name__, instance_relative_config=True)
@@ -26,7 +28,7 @@ def create_app(config=None):
     def hello_world():
         return '/dingtalk/<your_dingding_name>/send'
 
-    def pre_process_data(data):
+    def pre_process_date(data):
         for alert in data["alerts"]:
             alert["startsAt"] = " ".join(
                 re.search(r'([0-9]{4}-[0-9]{2}-[0-9]{2})T([0-9]{2}:[0-9]{2}:[0-9]{2}).*', alert["startsAt"]).group(1,
@@ -39,6 +41,12 @@ def create_app(config=None):
                 alert["during"] = (datetime.datetime.strptime(alert["endsAt"],
                                                               "%Y-%m-%d %H:%M:%S") - datetime.datetime.strptime(
                     alert["startsAt"], "%Y-%m-%d %H:%M:%S")).total_seconds() / 60
+    def pre_process_alias_name(data):
+        for alert in data["alerts"]:
+            id = alert["annotations"].get('id',None)
+            type =  alert["annotations"].get('type',None)
+            if  id  and  type :
+                alert["annotations"]["alias"] = app.custome_config["alias"][type][id]
 
     @app.route("/dingtalk/<string:name>/send", methods=['POST'])
     def send(name):
@@ -47,7 +55,11 @@ def create_app(config=None):
         data = request.json
         app.logger.info("{0}".format(request))
         app.logger.info("data={0}".format(data))
-        pre_process_data(data)
+
+        # 处理日期
+        pre_process_date(data)
+        # 处理别名问题
+        pre_process_alias_name(data)
         template_name = app.custome_config.get("template", "default")
         with open("templates/{0}_text.j2".format(template_name), 'r', encoding="utf-8") as f:
             lines = f.read()
@@ -73,6 +85,8 @@ def create_app(config=None):
     return app
 
 
+def get_alias_info():
+    pass
 if __name__ == '__main__':
     config = {'log.level': 'info',
               'web.listen_address': ':8060',
@@ -81,6 +95,7 @@ if __name__ == '__main__':
                   'dingding_webhook_opt_myself=https://oapi.dingtalk.com/robot/send?access_token=c7a512f349bd5fe5b1a2ce2b1f516ff6a4b20078a0c4fcc1ddf9721adba1260a',
                   'dingding_webhook_opt_myself=https://oapi.dingtalk.com/robot/send?access_token=c7a512f349bd5fe5b1a2ce2b1f516ff6a4b20078a0c4fcc1ddf9721adba1260a']}
 
+    config["alias"] = get_alias()
     app = create_app(config=config)
     host = config.get("web.listen_address").split(":")[0]
     port = config.get("web.listen_address").split(":")[1]
