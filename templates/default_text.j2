@@ -1,7 +1,7 @@
 
 {#  设置基础的链接地址 #}
-{% set prometheus_url='http://prometheus.limikeji.com:9090' %}
-{% set alertmanager_url='http://alertmanager.limikeji.com:9093' %}
+{% set prometheus_url='http://opt-prometheus.limikeji.com' %}
+{% set alertmanager_url='http://opt-alertmanager.limikeji.com' %}
 {% set first_info=data.alerts | first %}
 {% set first_info_alert_name=first_info.labels.alertname %}
 {% set first_info_filter= ( '{alertname="'+first_info_alert_name+'"}') | urlencode %}
