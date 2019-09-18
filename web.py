@@ -46,7 +46,10 @@ def create_app(config=None):
             id = alert["annotations"].get('id',None)
             type =  alert["annotations"].get('type',None)
             if  id  and  type :
-                alert["annotations"]["alias"] = app.custome_config["alias"][type][id]
+                try:
+                    alert["annotations"]["alias"] = app.custome_config["alias"][type][id]
+                except Exception as e :
+                    pass
 
     @app.route("/dingtalk/<string:name>/send", methods=['POST'])
     def send(name):
