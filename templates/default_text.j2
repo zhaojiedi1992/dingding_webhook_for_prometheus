@@ -49,7 +49,12 @@
 {% endif %}
 > - 报警级别: {{ first_info.labels.severity }}
 > - 实例详情: {{  first_info_link }}
-> - 故障信息:  目前恢复情况 {{  extra_data.resolved }}/{{ extra_data.alert }}。
+{% if first_info.annotations.message is defined %}
+ > - 详细信息: {{ first_info.annotations.message }}
+{% endif %}
+> - 故障信息:  目前恢复情况 {{  extra_data.resolved }}/{{ extra_data.alert }}
+
+
 {# 报警恢复 #}
 {% elif data.status == "resolved" %}
 > - 实例信息: {{ first_info_name }}
@@ -60,6 +65,9 @@
 > - 当前数值: {{ first_info.annotations.value |float |round(2,'common') }}{{first_info.labels.unit }}
 {% endif %}
 > - 实例详情: {{  first_info_link }}
+{% if first_info.annotations.message is defined %}
+ > - 详细信息: {{ first_info.annotations.message }}
+{% endif %}
 > - 故障信息:  目前所有({{  extra_data.resolved }})报警已恢复。
 {# 其他的 #}
 {% else %}
