@@ -50,7 +50,7 @@
 > - 报警级别: {{ first_info.labels.severity }}
 > - 实例详情: {{  first_info_link }}
 {% if first_info.annotations.message is defined %}
- > - 详细信息: {{ first_info.annotations.message }}
+> - 详细信息: {{ first_info.annotations.message }}
 {% endif %}
 > - 故障信息:  目前恢复情况 {{  extra_data.resolved }}/{{ extra_data.alert }}
 
@@ -66,7 +66,7 @@
 {% endif %}
 > - 实例详情: {{  first_info_link }}
 {% if first_info.annotations.message is defined %}
- > - 详细信息: {{ first_info.annotations.message }}
+> - 详细信息: {{ first_info.annotations.message }}
 {% endif %}
 > - 故障信息:  目前所有({{  extra_data.resolved }})报警已恢复。
 {# 其他的 #}
