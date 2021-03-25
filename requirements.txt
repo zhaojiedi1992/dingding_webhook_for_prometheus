@@ -10,7 +10,7 @@ jmespath==0.9.4
 MarkupSafe==1.1.1
 prometheus-client==0.7.1
 prometheus-http-client==1.0.0
-PyYAML==5.1.2
+PyYAML==5.4
 requests==2.22.0
 urllib3==1.25.3
 Werkzeug==0.15.5
